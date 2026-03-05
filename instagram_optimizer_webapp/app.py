@@ -58,7 +58,7 @@ st.markdown("""
 @st.cache_data
 def load_data():
     """Load and preprocess Instagram Analytics dataset."""
-    data = pd.read_csv('Instagram_Analytics.csv')
+    data = pd.read_csv("instagram_optimizer_webapp/Instagram_Analytics.csv")
     
     # Convert upload_date to datetime
     data['upload_date'] = pd.to_datetime(data['upload_date'])
@@ -795,3 +795,4 @@ st.markdown("""
     <p>Data-driven insights for Instagram success 🚀</p>
 </div>
 """, unsafe_allow_html=True)
+
