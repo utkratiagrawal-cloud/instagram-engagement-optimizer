@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  streamlit:
+    build: .
+    container_name: instagram-optimizer
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./app.py:/app/app.py
+      - ./Instagram_Analytics.csv:/app/Instagram_Analytics.csv
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_PORT=8501
+      - STREAMLIT_SERVER_ENABLECORS=false
+      - STREAMLIT_LOGGER_LEVEL=warning
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8501/_stcore/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
