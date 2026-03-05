@@ -580,6 +580,15 @@ elif page == "🎯 Recommendation Tool":
             
             # Display Results
             st.markdown("### 🏆 Your Personalized Recommendations")
+
+            # KPI Summary Cards
+            avg_engagement = filtered_data['engagement_score'].mean()
+            
+            kpi1, kpi2, kpi3 = st.columns(3)
+            
+            kpi1.metric("Best Posting Hour", f"{best_hour}:00")
+            kpi2.metric("Best Posting Day", best_day)
+            kpi3.metric("Average Engagement", f"{avg_engagement:,.0f}")
             
             col1, col2 = st.columns(2)
             
@@ -795,4 +804,5 @@ st.markdown("""
     <p>Data-driven insights for Instagram success 🚀</p>
 </div>
 """, unsafe_allow_html=True)
+
 
